@@ -1,0 +1,47 @@
+{
+	"name": "@owretch/create-github-review",
+	"version": "0.1.0",
+	"description": "A simple ESM-only module to generate a diff from local changes in a Git repository.",
+	"author": "oWretch",
+	"license": "MPL-2.0",
+	"keywords": ["github", "review"],
+	"type": "module",
+	"module": "dist/index",
+	"types": "dist/index",
+	"exports": "./dist/index.mjs",
+	"engines": {
+		"node": ">=22"
+	},
+	"scripts": {
+		"clean": "rm -rf dist/* *.tsbuildinfo",
+		"prebuild": "npm run clean",
+		"build": "tsc",
+		"preversion": "npm run build",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"compiler": {
+		"outDir": "./dist"
+	},
+	"files": ["dist"],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/oWretch/create-github-review.git"
+	},
+	"homepage": "https://github.com/oWretch/create-github-review#readme",
+	"bugs": {
+		"url": "https://github.com/oWretch/create-github-review/issues"
+	},
+	"dependencies": {
+		"@actions/core": "^1.11.1",
+		"@actions/github": "^6.0.0"
+	},
+	"devDependencies": {
+		"@octokit/webhooks-types": "^7.6.1",
+		"@owretch/git-diff": "^0.10.1",
+		"@types/node": "^22.7.5",
+		"esbuild": "^0.24.0",
+		"esbuild-plugin-tsc": "^0.4.0",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.6.3"
+	}
+}
