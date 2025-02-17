@@ -1,8 +1,7 @@
 import * as core from "@actions/core";
-import * as github from "@actions/github";
+import { context, getOctokit } from "@actions/github";
 import type { Change } from "@owretch/git-diff";
 
-const { context } = github;
 const reviewTag = `<!-- Review from ${context.action} -->`;
 
 if (!context.payload.pull_request) {
@@ -13,7 +12,7 @@ const { pull_request } = context.payload;
 export default async function (changes: Set<Change>, reviewBody: string) {
 	core.info("Creating a GitHub review");
 	core.debug("Creating octokit client");
-	const octokit = github.getOctokit(core.getInput("token", { required: true }));
+	const octokit = getOctokit(core.getInput("token", { required: true }));
 
 	// Find the existing review(s), if they exists
 	core.debug("Listing existing reviews on the pull request");
@@ -120,12 +119,6 @@ export default async function (changes: Set<Change>, reviewBody: string) {
 	// Post a new review if we have changes
 	if (changes.size > 0) {
 		core.debug("Creating new review");
-
-		const changedFileNames = new Set(
-			[...changes]
-				.map((change) => change.toFile?.name ?? change.fromFile?.name)
-				.filter((n) => n !== undefined),
-		);
 
 		await octokit.rest.pulls.createReview({
 			...context.repo,
