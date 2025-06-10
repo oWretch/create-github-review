@@ -50,7 +50,7 @@
 		"@owretch/git-diff": "^0.10.1",
 		"@types/node": "^24.0.0",
 		"esbuild": "^0.25.0",
-		"esbuild-plugin-tsc": "^0.4.0",
+		"esbuild-plugin-tsc": "^0.5.0",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.6.3"
 	}
