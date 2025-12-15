@@ -48,7 +48,7 @@
 	"devDependencies": {
 		"@octokit/webhooks-types": "^7.6.1",
 		"@owretch/git-diff": "^1.0.0",
-		"@types/node": "^24.0.0",
+		"@types/node": "^25.0.2",
 		"esbuild": "^0.27.0",
 		"esbuild-plugin-tsc": "^0.5.0",
 		"ts-node": "^10.9.2",
